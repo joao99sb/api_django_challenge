@@ -4,7 +4,7 @@ from db_connections import db
 import re
 import uuid
 import base64
-character_connection = db['Character']
+character_connection = db['Characters']
 book_connection = db['Books']
 cover_connection = db['Covers']
 
@@ -84,23 +84,33 @@ def import_all_data():
 
 
     book['isbn'] = int(str(book['isbn']).replace('-',''))
-    cover_id_list.append(book['isbn'])
+
+    cover_struct = {
+      'id':book['isbn'],
+      'book_id':book['id']
+    }
+    cover_id_list.append(cover_struct)
     book_list.append(book)
 
 
   print('**** obtendo as informação das capas dos livros ****\n')
 # https://covers.openlibrary.org/b/isbn/
   cover_list =[]
-  for cover_id in cover_id_list:
+  for cover_obj in cover_id_list:
     url_cover = 'https://covers.openlibrary.org/b/isbn/$ID-M.jpg'
+
+    cover_id = cover_obj['id']
+    book_id = cover_obj['book_id']
     cover_entity={}
     cover = requests.get(url_cover.replace('$ID',str(cover_id)))
-    cover_base64 = base64.b64encode(cover.content)
+    cover_base64 = base64.b64encode(cover.content).decode('utf-8')
     
     cover_entity['id'] = cover_id
+    cover_entity['bookId'] = book_id
+
     cover_entity['content'] = cover_base64
 
-    cover_hash_table[cover_id] = cover_base64
+    # cover_hash_table[cover_id] = cover_base64
 
 
     cover_list.append(cover_entity)
