@@ -1,6 +1,6 @@
 import requests
 from itertools import chain
-from db_connections import db 
+from db_connections import db,close_connection
 import re
 import uuid
 import base64
@@ -94,7 +94,7 @@ def import_all_data():
 
 
   print('**** obtendo as informação das capas dos livros ****\n')
-# https://covers.openlibrary.org/b/isbn/
+  # https://covers.openlibrary.org/b/isbn/
   cover_list =[]
   for cover_obj in cover_id_list:
     url_cover = 'https://covers.openlibrary.org/b/isbn/$ID-M.jpg'
@@ -125,6 +125,9 @@ def import_all_data():
   book_connection.insert_many(book_list)
   print('**** inserindo as informação dos personagens no banco ****\n')
   cover_connection.insert_many(cover_list)
+
+
+  close_connection()
 
 def format_pov(list,hash_table):
   new_list = []
