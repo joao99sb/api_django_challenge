@@ -11,5 +11,5 @@
 
 
 # conteinizar a aplicação (ok)
-# fazer deploy
+# fazer deploy (ok) 
 # inserir marca d'água?
