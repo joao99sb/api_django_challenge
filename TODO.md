@@ -8,3 +8,8 @@
 # obter um ou mais livros (ok)
 # obter a capa dos livros (ok)
 # obter a capa de um ou mais livros (ok)
+
+
+# conteinizar a aplicação (ok)
+# fazer deploy
+# inserir marca d'água?

@@ -1,7 +1,11 @@
-version: '3.9'
+version: '3.8'
+
 services:
-  redis_queue:
-    image: redis
-    command: redis-server --requirepass 12345
+
+  django:
+    build: .
+    command: python manage.py runserver 0.0.0.0:8000
+    volumes:
+      - ./app/:/usr/src/app/
     ports:
-      - 6379:6379
+      - 8000:8000
