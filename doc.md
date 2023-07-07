@@ -212,7 +212,7 @@ A URL base para todas as chamadas de API é: `https://api.django.seliga.shop/`
   - `id` (obrigatório): Permite filtrar os resultados com base nos id .
 - **Exemplo de Requisição**:
 
-  - `https://api.django.seliga.shop/book/cover`
+  - `https://api.django.seliga.shop/book/2/cover`
 
 - **Exemplo de Resposta**:
 
