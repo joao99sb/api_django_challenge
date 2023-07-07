@@ -86,7 +86,7 @@ def get_all_books(request):
 
     response['Content-Type'] = 'application/json'
     response.content = result
-    return HttpResponse(result)
+    return response
   except Exception:
     return JsonResponse({})
 
@@ -135,7 +135,7 @@ def get_cover(request,book_ids):
       
     ids_list = book_ids.split('&')
     ids_list = list(map(lambda id: int(id),ids_list))
-    
+
     query = {"bookId":{'$in':ids_list}}
     cover = cover_connection.find(query)
     
