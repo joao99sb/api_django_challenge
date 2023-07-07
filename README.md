@@ -7,7 +7,7 @@ Bem-vindo à documentação da API! Esta API é resultado de um desafio de cria�
 Para começar a usar a API, siga estas etapas:
 
 1. Clone este repositório em sua máquina local.
-2. Inicie o servidor da API com o comando`docker-compose up -d`.
+2. Inicie o servidor da API com o comando `docker-compose up -d`.
 
 ## Uso da API
 
